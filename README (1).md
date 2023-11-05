@@ -1,14 +1,14 @@
 # АНАЛИЗ ДАННЫХ И ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ [in GameDev]
-Отчет по лабораторной работе #1 выполнил(а):
-- Иванова Ивана Варкравтовна
-- РИ000024
+Отчет по лабораторной работе #2 выполнил(а):
+- Злыгостев Игорь Сергеевич
+- РИ221001
 Отметка о выполнении заданий (заполняется студентом):
 
 | Задание | Выполнение | Баллы |
 | ------ | ------ | ------ |
-| Задание 1 | # | 60 |
-| Задание 2 | # | 20 |
-| Задание 3 | # | 20 |
+| Задание 1 | * | 60 |
+| Задание 2 | * | 20 |
+| Задание 3 | * | 20 |
 
 знак "*" - задание выполнено; знак "#" - задание не выполнено;
 
@@ -21,109 +21,158 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-Структура отчета
-
-- Данные о работе: название работы, фио, группа, выполненные задания.
-- Цель работы.
-- Задание 1.
-- Код реализации выполнения задания. Визуализация результатов выполнения (если применимо).
-- Задание 2.
-- Код реализации выполнения задания. Визуализация результатов выполнения (если применимо).
-- Задание 3.
-- Код реализации выполнения задания. Визуализация результатов выполнения (если применимо).
-- Выводы.
-- ✨Magic ✨
-
 ## Цель работы
-Ознакомиться с основными операторами зыка Python на примере реализации линейной регрессии.
+научиться передавать в Unity данные из Google Sheets с помощью Python.
 
 ## Задание 1
-### Пошагово выполнить каждый пункт раздела "ход работы" с описанием и примерами реализации задач
-Ход работы:
-- Произвести подготовку данных для работы с алгоритмом линейной регрессии. 10 видов данных были установлены случайным образом, и данные находились в линейной зависимости. Данные преобразуются в формат массива, чтобы их можно было вычислить напрямую при использовании умножения и сложения.
+### Выберите одну из компьютерных игр, приведите скриншот её геймплея и краткое описание концепта игры. Выберите одну из игровых переменных в игре (ресурсы, внутри игровая валюта, здоровье персонажей и т.д.), опишите её роль в игре, условия изменения / появления и диапазон допустимых значений. Постройте схему экономической модели в игре и укажите место выбранного ресурса в ней.
 
-```py
+Игра: Team Fortress 2
+- Team Fortress 2 - командная многопользовательская игра-шутер от первого лица. Игроки могут выбирать один из девяти классов, каждый из которых обладает уникальными способностями и ролями, и соревноваться в различных игровых режимах, но будем мы рассматривать PvE режим Mann vs Machines
 
-In [ ]:
-#Import the required modules, numpy for calculation, and Matplotlib for drawing
-import numpy as np
-import matplotlib.pyplot as plt
-#This code is for jupyter Notebook only
-%matplotlib inline
+![Скриншот из игры](https://github.com/ZlygIgor/UrFU-AD-2/blob/main/TF2MvM.jpg)
 
-# define data, and change list to array
-x = [3,21,22,34,54,34,55,67,89,99]
-x = np.array(x)
-y = [2,22,24,65,79,82,55,130,150,199]
-y = np.array(y)
+- Как переменную мы будем рассматривать деньги, роль денег в игре - покупка улучшений, выкуп в случае смерти и покупкая временных бонусов. Деньги выпадают с поверженных врагов, чем сильнее враг, тем больше награда. Диапазон значений от нуля до десятков тысяч.
 
-#Show the effect of a scatter plot
-plt.scatter(x,y)
-
-```
-
-- Определите связанные функции. Функция модели: определяет модель линейной регрессии wx+b. Функция потерь: функция потерь среднеквадратичной ошибки. Функция оптимизации: метод градиентного спуска для нахождения частных производных w и b.
-
+![Схема экономической модели](https://github.com/ZlygIgor/UrFU-AD-2/blob/main/ResScheme.png)
 
 ## Задание 2
-### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
+### С помощью скрипта на языке Python заполните google-таблицу данными, описывающими выбранную игровую переменную в выбранной игре (в качестве таких переменных может выступать игровая валюта, ресурсы, здоровье и т.д.). Средствами google-sheets визуализируйте данные в google-таблице (постройте график, диаграмму и пр.) для наглядного представления выбранной игровой величины.
 
-- Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
-- Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
+
+- По примеру из файла с Workshop #2, и скрипта на Python заполняем Google таблицу (https://docs.google.com/spreadsheets/d/1YvBaLz9b1MpGkrh3lLLTEIUEWta6FTfTU8Dp4di-bpM/edit#gid=0)
 
 ```py
 
-import ScriptEnv
-ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-oDesktop.RestoreWindow()
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/denisov.dv/Documents/Ansoft/SphereDIffraction.aedt", True)
-oProject.InsertDesign("HFSS", "HFSSDesign1", "HFSS Terminal Network", "")
-oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oEditor = oDesign.SetActiveEditor("3D Modeler")
-oEditor.CreateSphere(
-	[
-		"NAME:SphereParameters",
-		"XCenter:="		, "0mm",
-		"YCenter:="		, "0mm",
-		"ZCenter:="		, "0mm",
-		"Radius:="		, "1.0770329614269mm"
-	], 
-)
+import gspread
+import numpy as np
+gc = gspread.service_account(filename='unitydatascience-404212-ef8e02007d88.json')
+sh = gc.open("UnityWorkshop2")
+price = np.random.randint(0, 10000, 11)
+mon = list(range(1,11))
+i = 0
+while i <= len(mon):
+    i += 1
+    if i == 0:
+        continue
+    else:
+        tempInf = ((price[i-1]-price[i-2])/price[i-2])*100
+        tempInf = str(tempInf)
+        tempInf = tempInf.replace('.',',')
+        sh.sheet1.update(('A' + str(i)), str(i))
+        sh.sheet1.update(('B' + str(i)), str(price[i-1]))
+        sh.sheet1.update(('C' + str(i)), str(tempInf))
+        print(tempInf)
 
 ```
 
 ## Задание 3
-### Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента можете изменить значение параметра.
+### Настройте на сцене Unity воспроизведение звуковых файлов, описывающих динамику изменения выбранной переменной. Например, если выбрано здоровье главного персонажа вы можете выводить сообщения, связанные с его состоянием.
 
-- Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
-- Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
 
-```py
+- Создаём 3D проект в Unity, в нём создаём скрипт и привязываем его к 3D объекту, которому в свою очеред добавляем Audio Source, добавляем jsonPackage и soundPackage в Assets
 
-import ScriptEnv
-ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-oDesktop.RestoreWindow()
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/denisov.dv/Documents/Ansoft/SphereDIffraction.aedt", True)
-oProject.InsertDesign("HFSS", "HFSSDesign1", "HFSS Terminal Network", "")
-oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oEditor = oDesign.SetActiveEditor("3D Modeler")
-oEditor.CreateSphere(
-	[
-		"NAME:SphereParameters",
-		"XCenter:="		, "0mm",
-		"YCenter:="		, "0mm",
-		"ZCenter:="		, "0mm",
-		"Radius:="		, "1.0770329614269mm"
-	], 
-)
+```C#
+
+using SimpleJSON;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Networking;
+
+public class NewBehaviourScript : MonoBehaviour
+{
+    public AudioClip goodSpeak;
+    public AudioClip normalSpeak;
+    public AudioClip badSpeak;
+    private AudioSource selectAudio;
+    private Dictionary<string, float> dataSet = new Dictionary<string, float>();
+    private bool statusStart = false;
+    private int i = 1;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        StartCoroutine(GoogleSheets());
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (dataSet["Mon_" + i.ToString()] <= 10 & statusStart == false & i != dataSet.Count)
+        {
+            StartCoroutine(PlaySelectAudioBad());
+            Debug.Log(dataSet["Mon_" + i.ToString()]);
+            print("For shame!");
+        }
+
+        if (dataSet["Mon_" + i.ToString()] > 10 & dataSet["Mon_" + i.ToString()] < 100 & statusStart == false & i != dataSet.Count)
+        {
+            StartCoroutine(PlaySelectAudioNormal());
+            Debug.Log(dataSet["Mon_" + i.ToString()]);
+            print("Nomalno, normalno");
+        }
+
+        if (dataSet["Mon_" + i.ToString()] >= 100 & statusStart == false & i != dataSet.Count)
+        {
+            StartCoroutine(PlaySelectAudioGood());
+            Debug.Log(dataSet["Mon_" + i.ToString()]);
+            print("HOORAY!!");
+        }
+    }
+
+    IEnumerator GoogleSheets()
+    {
+        UnityWebRequest curentResp = UnityWebRequest.Get("https://sheets.googleapis.com/v4/spreadsheets/1YvBaLz9b1MpGkrh3lLLTEIUEWta6FTfTU8Dp4di-bpM/values/Лист1?key=AIzaSyAaSTxWc91X-193mS_vSJmsYlRvHg_H4wA");
+        yield return curentResp.SendWebRequest();
+        string rawResp = curentResp.downloadHandler.text;
+        var rawJson = JSON.Parse(rawResp);
+        foreach (var itemRawJson in rawJson["values"])
+        {
+            var parseJson = JSON.Parse(itemRawJson.ToString());
+            var selectRow = parseJson[0].AsStringList;
+            dataSet.Add(("Mon_" + selectRow[0]), float.Parse(selectRow[2]));
+        }
+    }
+
+    IEnumerator PlaySelectAudioGood()
+    {
+        statusStart = true;
+        selectAudio = GetComponent<AudioSource>();
+        selectAudio.clip = goodSpeak;
+        selectAudio.Play();
+        yield return new WaitForSeconds(3);
+        statusStart = false;
+        i++;
+    }
+    IEnumerator PlaySelectAudioNormal()
+    {
+        statusStart = true;
+        selectAudio = GetComponent<AudioSource>();
+        selectAudio.clip = normalSpeak;
+        selectAudio.Play();
+        yield return new WaitForSeconds(3);
+        statusStart = false;
+        i++;
+    }
+    IEnumerator PlaySelectAudioBad()
+    {
+        statusStart = true;
+        selectAudio = GetComponent<AudioSource>();
+        selectAudio.clip = badSpeak;
+        selectAudio.Play();
+        yield return new WaitForSeconds(4);
+        statusStart = false;
+        i++;
+    }
+}
+
 
 ```
 
 ## Выводы
 
-Абзац умных слов о том, что было сделано и что было узнано.
+Мы научились создавать связь между Google Sheets, Unity и JupiterNotebook. Основываясь на изученных данных смогли создать систему считывающую и генерирующую данные в разных источниках
 
 | Plugin | README |
 | ------ | ------ |
